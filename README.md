@@ -18,7 +18,7 @@ This React assignment consists of three levels. Each level introduces new featur
 - Multiple Pages: The website should have at least three pages:
   - Home Page: Welcomes the user.
   - Product Page: Displays a list of products fetched from the API.
-  - Product Detail Page: Displays detailed information for a selected product.
+  - Product Detail Page: Displays detailed information for a selected product by fetching product by id with this endpoint: `https://fakestoreapi.com/products/{productId}`
 
 3. Level 3: Advanced Features and Error Handling
 
