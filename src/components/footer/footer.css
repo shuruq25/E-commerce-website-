@@ -1,77 +1,67 @@
-:root {
-  --light-bg: #f0f4f8;
-  --light-text: #333333;
-  --light-header-bg: #4A90E2;
-  --light-btn-bg: #4A90E2;
-  --light-btn-hover-bg: #357ABD;
-  --light-link-color: #007BFF;
-  --light-secondary-text: #8A8A8A;
-  --light-card-bg: #ffffff;
-  --light-card-text: #555555;
-
-  --dark-bg: #121212;
-  --dark-text: #E0E0E0;
-  --dark-header-bg: #4B0082;
-  --dark-btn-bg: #5A2D82;
-  --dark-btn-hover-bg: #7A3E98;
-  --dark-link-color: #B47EFF;
-  --dark-secondary-text: #9E9E9E;
-  --dark-card-bg: #333333;
-  --dark-card-text: #dddddd;
-}
-
 .footer {
-  padding: 40px 20px;
-  text-align: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-
-.footer.light {
-  background-color: var(--light-bg);
-  color: var(--light-text);
-}
-
-.footer.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-}
-
-.footer-links {
-  margin-bottom: 40px;
+  background-color: #f8f8f8;
+  color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .footer p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.footer-contact {
   margin-top: 20px;
 }
 
-.footer-links a {
-  color: inherit;
-  margin: 0 15px;
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: var(--light-link-color);
-}
-
-.footer-links.dark a:hover {
-  color: var(--dark-header-bg);
+.footer-social h3 {
+  margin: 10px 0;
 }
 
 .footer-social a {
-  margin: 0 10px;
-  color: inherit;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  color: #333;
 }
 
 .footer-social a:hover {
-  color: var(--light-link-color);
+  text-decoration: underline;
 }
 
-.footer-social.dark a:hover {
-  color: var(--dark-header-bg);
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
 }
 
+.footer.dark {
+  background-color: #333;
+  color: #f8f8f8;
+}
+
+.footer.dark p,
+.footer.dark ul li {
+  color: #f8f8f8;
+}
+
+.footer.dark .footer-social a {
+  color: #f8f8f8;
+}
+
+.footer.dark .footer-social a:hover {
+  text-decoration: underline;
+ }

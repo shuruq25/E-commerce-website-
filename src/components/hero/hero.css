@@ -1,123 +1,132 @@
-:root {
-  --light-bg: #f0f4f8;
-  --light-text: #333333;
-  --light-header-bg: #4A90E2;
-  --light-btn-bg: #4A90E2;
-  --light-btn-hover-bg: #357ABD;
-  --light-link-color: #007BFF;
-  --light-secondary-text: #8A8A8A;
-  --light-card-bg: #ffffff;
-  --light-card-text: #555555;
-
-  --dark-bg: #121212;
-  --dark-text: #E0E0E0;
-  --dark-header-bg: #4B0082;
-  --dark-btn-bg: #5A2D82;
-  --dark-btn-hover-bg: #7A3E98;
-  --dark-link-color: #B47EFF;
-  --dark-secondary-text: #9E9E9E;
-  --dark-card-bg: #333333;
-  --dark-card-text: #dddddd;
-}
-
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url('../../assets/background.jpg') no-repeat center center/cover;
-  height: 90vh;
-  color: white;
-  text-align: center;
   position: relative;
-  padding: 80px 20px;
-  z-index: 0;
-}
-
-.box {
-  max-width: 600px; 
-  width: 90%;
-  background-color: var(--light-card-bg);
-  border-radius: 10px; 
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  padding: 40px; 
-  position: relative; 
-  z-index: 1;
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8); 
+  overflow: hidden;
   transition: background-color 0.3s ease; 
 }
 
-.box.dark {
-  background-color: var(--dark-card-bg); 
+.hero.light {
+  background-color: rgba(255, 255, 255, 0.8); 
+}
+
+.hero.dark {
+  background-color: rgba(0, 0, 0, 0.7); 
 }
 
 .hero-content {
-  z-index: 1;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px; 
 }
 
-.hero h1 {
-  font-size: 48px;
-  margin: 0;
-  font-weight: bold;
-  color: var(--light-header-bg);
+.text-container {
+  color: #414141;
   transition: color 0.3s ease;
 }
 
-.hero p {
-  font-size: 24px;
-  margin: 20px 0;
-  color: var(--light-text);
+.hero.light .text-container {
+  color: #414141; 
+}
+
+.hero.dark .text-container {
+  color: #fff;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background-color: #414141;
+  transition: background-color 0.3s ease;
+}
+
+.hero.light .line {
+  background-color: #414141;
+}
+
+.hero.dark .line {
+  background-color: #fff; 
+}
+
+.title-text {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #414141;
   transition: color 0.3s ease;
 }
 
-.cta-btn {
-  background-color: var(--light-btn-bg);
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  font-size: 18px;
+.hero.light .title-text {
+  color: #414141;
+}
+
+.hero.dark .title-text {
+  color: #fff;
+}
+
+.main-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
+  font-family: prata-regular ;
+}
+
+.hero.light .main-heading {
+  color: #414141; 
+}
+
+.hero.dark .main-heading {
+  color: #fff;
+}
+
+.shop-now {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.shop-text {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #414141;
   cursor: pointer;
-  margin-top: 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: color 0.3s ease;
 }
 
-.cta-btn:hover {
-  background-color: var(--light-btn-hover-bg);
+.hero.light .shop-text {
+  color: #414141; 
 }
 
-.hero.light {
-  background-color: var(--light-bg);
-  color: var(--light-text);
+.hero.dark .shop-text {
+  color: #fff; 
 }
 
-.hero.light h1 {
-  color: var(--light-header-bg);
+.shop-text:hover {
+  color: #ff6600;
 }
 
-.hero.light p {
-  color: var(--light-secondary-text);
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; 
 }
-
-
-.hero.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-}
-
-.hero.dark h1 {
-  color: var(--dark-header-bg);
-}
-
-.hero.dark p {
-  color: var(--dark-secondary-text);
-}
-
-.cta-btn.dark {
-  background-color: var(--dark-btn-bg);
-  color: var(--dark-text);
-}
-
-.cta-btn.dark:hover {
-  background-color: var(--dark-btn-hover-bg);
-}
-
 
