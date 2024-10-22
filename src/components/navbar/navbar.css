@@ -1,0 +1,204 @@
+:root {
+  --light-bg: #f0f4f8;
+  --light-text: #333333;
+  --light-header-bg: #7ea6d4;
+  --light-btn-bg: #7999bd;
+  --light-btn-hover-bg: #357ABD;
+  --light-link-color: #007BFF;
+  --light-secondary-text: #8A8A8A;
+  --light-card-bg: #ffffff;
+  --light-card-text: #555555;
+  --light-nav-bg: #ffffff;
+  --light-search-box-bg: #e0e0e0;
+  --light-dropdown-bg: #ffffff;
+  --light-dropdown-hover-bg: #f1f1f1;
+
+  --dark-bg: #121212;
+  --dark-text: #E0E0E0;
+  --dark-header-bg: #4B0082;
+  --dark-btn-bg: #5A2D82;
+  --dark-btn-hover-bg: #7A3E98;
+  --dark-link-color: #B47EFF;
+  --dark-secondary-text: #9E9E9E;
+  --dark-card-bg: #333333;
+  --dark-card-text: #dddddd;
+  --dark-nav-bg: #1c1c1c;
+  --dark-search-box-bg: #444;
+  --dark-dropdown-bg: #333;
+  --dark-dropdown-hover-bg: #555;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background:#fff;
+  padding: 15px 7%;
+  transition: background-color 0.5s, color 0.5s;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  height: 100px;
+  cursor: pointer;
+}
+
+ul {
+  flex: 1;
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+ul li {
+  display: inline-block;
+  margin: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+ul li:hover {
+  color: var(--light-btn-bg); 
+}
+
+a {
+  color: var(--light-text);
+  text-decoration: none;
+}
+
+.toggle-icon {
+  width: 50px;
+  cursor: pointer;
+  margin-left: 40px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon:hover {
+  transform: scale(1.1);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--light-search-box-bg);
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-right: 40px;
+}
+
+.search-box input {
+  padding: 6px;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font-size: 18px;
+  max-width: 200px;
+}
+
+.search-box input::placeholder {
+  color: #fff;
+}
+
+.search-box img {
+  width: 20px;
+  cursor: pointer;
+}
+
+.dark .navbar {
+  background: var(--dark-nav-bg);
+  color: var(--dark-text);
+}
+
+.dark .search-box {
+  background: var(--dark-search-box-bg);
+}
+
+.dark .search-box input::placeholder {
+  color: var(--dark-secondary-text);
+}
+
+.dark ul li:hover {
+  color: var(--dark-btn-bg); 
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.icon:hover {
+  filter: brightness(1.2);
+}
+
+.nav-item i {
+  margin-right: 8px; 
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: var(--light-dropdown-bg);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--light-text);
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--light-dropdown-hover-bg);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover > .dropdown-toggle {
+  color: var(--light-btn-bg);
+}
+
+.dark .dropdown-menu {
+  background-color: var(--dark-dropdown-bg);
+  color: var(--dark-text);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.dark .dropdown-menu .dropdown-item {
+  color: var(--dark-text);
+}
+
+.dark .dropdown-menu .dropdown-item:hover {
+  background-color: var(--dark-dropdown-hover-bg);
+}
+
+.dark a {
+  color: var(--dark-text);
+  text-decoration: none;
+}
+

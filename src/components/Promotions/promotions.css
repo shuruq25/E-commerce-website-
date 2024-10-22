@@ -1,0 +1,111 @@
+:root {
+  --light-bg: #f0f4f8;
+  --light-text: #333333;
+  --light-header-bg: #4A90E2;
+  --light-btn-bg: #4A90E2;
+  --light-btn-hover-bg: #357ABD;
+  --light-secondary-text: #8A8A8A;
+  --light-card-bg: #ffffff;
+  --light-card-text: #555555;
+
+  --dark-bg: #121212;
+  --dark-text: #E0E0E0;
+  --dark-header-bg: #4B0082;
+  --dark-btn-bg: #5A2D82;
+  --dark-btn-hover-bg: #7A3E98;
+  --dark-secondary-text: #9E9E9E;
+  --dark-card-bg: #333333;
+  --dark-card-text: #dddddd;
+}
+
+.promotions {
+  padding: 60px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.promotions.light {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+.promotions.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.promotions h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.promotion-cards {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px; 
+  flex-wrap: wrap; 
+}
+
+.promotion-card {
+  background-color: var(--light-card-bg);
+  padding: 50px;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 90%; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--light-card-text);
+}
+
+.promotion-card h3 {
+  font-size: 24px;
+  color: var(--light-header-bg);
+}
+
+.promotion-card p {
+  font-size: 18px;
+  color: var(--light-secondary-text);
+  margin: 20px 0;
+}
+
+.promotion-card .cta-btn {
+  padding: 12px 25px;
+  background-color: var(--light-btn-bg);
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.promotion-card .cta-btn:hover {
+  background-color: var(--light-btn-hover-bg);
+}
+
+.promotions.dark .promotion-card {
+  background-color: var(--dark-card-bg);
+}
+
+.promotions.dark .promotion-card h3 {
+  color: var(--dark-btn-bg);
+}
+
+.promotions.dark .promotion-card p {
+  color: var(--dark-card-text);
+}
+
+
+.cta-btn.dark {
+  background-color: var(--dark-btn-bg);
+  color: var(--dark-text);
+}
+
+.cta-btn.dark:hover {
+  background-color: var(--dark-btn-hover-bg);
+}
+.promotion-card .dark h3 {
+  color: var(---dark-btn-hover-bg); 
+}
