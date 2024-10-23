@@ -1,0 +1,27 @@
+
+  .form-label {
+    display: block;
+    color: #b8794f; 
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .form-input {
+    width: 150px;
+    padding: 8px;
+    border: 1px solid #d2d6dc; 
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+    font-size: 16px;
+    color: #4299e1;
+  }
+  .form-input::placeholder{
+    font-size: 14px;
+
+  }
+  .form-input:focus {
+    border-color: #4299e1; 
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+  }
+  

@@ -15,7 +15,7 @@ const Contact = () => {
         />
         <div className="flex flex-col justify-center items-start gap-6 text-700">
           <p className="text-lg font-semibold">Our Store</p>
-          <p className="text-lg">123 Coffee Lane, Jeddah, Saudi Arabia</p>
+          <p className="text-lg">123 Tahlia, Jeddah, Saudi Arabia</p>
           <p className="text-lg">
             Tel: (998) 556-234-3456 <br />
             Email: <a href="mailto:admin@goodmood.com" className="text-orange-600 underline">admin@goodmood.com</a>

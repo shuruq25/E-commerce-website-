@@ -16,7 +16,7 @@
 
 .navbar .logo {
   width: 80px;
-  height: 60px;
+  height: auto; 
 }
 
 .menu-toggle {
@@ -36,6 +36,7 @@
     gap: 1rem;
     margin-top: 1rem;
     width: 100%;
+    background-color: inherit; 
   }
 
   .nav-links.open {
@@ -109,46 +110,13 @@
   filter: invert(1);
 }
 
-.search-box {
-  display: flex;
-  align-items: center;
-  background-color: #f0f0f0;
-  padding: 0.5rem;
-  border-radius: 5px;
-  width: 250px;
-  transition: background-color 0.3s;
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  background: transparent;
-  color: inherit;
-  padding-left: 10px;
-  flex-grow: 1;
-}
-
-.search-box img {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.navbar.dark .search-box {
-  background-color: #555;
-}
-
-.navbar.dark .search-box input {
-  color: white;
-}
-
 .toggle-icon {
   width: 40px;
   height: 40px;
   cursor: pointer;
   margin-left: 15px;
 }
+
 .signin-dropdown {
   position: relative;
 }
@@ -173,4 +141,13 @@
 
 .dropdown-menu p:hover {
   color: #ff6600;
+}
+
+.navbar.dark .dropdown-menu {
+  background-color: #121212 ; 
+  color: #fff; 
+}
+
+.dropdown-menu p:hover {
+  color: #ff6600; 
 }
