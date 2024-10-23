@@ -4,7 +4,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import './App.css';
 import HomePage from './pages/HomePage';
 import About from './pages/About';
-import Collection from './pages/collection';
+import Productsitem from './pages/Products';
 import Contact from './pages/contact';
 import Cart from './pages/cart';
 import Product from './pages/productPage';
@@ -60,12 +60,14 @@ function App() {
     );
   }
 
+  const limitedProductList = productList.slice(0, 6); 
+
   return (
     <div className='container'>
       <Navbar theme={theme} setTheme={setTheme} />
       <Routes>
-        <Route path='/' element={<HomePage theme={theme} setTheme={setTheme} productList={productList} />} />
-        <Route path='/collection' element={<Collection />} />
+        <Route path='/' element={<HomePage theme={theme} productList={limitedProductList} />} />
+        <Route path='/collection' element={<Productsitem theme={theme} productList={productList} />} />
         <Route path='/about' element={<About />} />
         <Route path='/product/:id' element={<Product />} />
         <Route path='/contact' element={<Contact />} />

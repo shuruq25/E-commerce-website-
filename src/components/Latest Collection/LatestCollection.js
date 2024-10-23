@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import './LatestCollection.css'; 
 
-const LatestCollection = ({ productList, theme }) => { 
-  const firstSixProducts = productList.slice(0, 12); 
+const LatestCollection = ({ productList, theme }) => {
   const productContainerRef = useRef(null); 
 
   const scrollLeft = () => {
@@ -21,7 +20,6 @@ const LatestCollection = ({ productList, theme }) => {
 
   return (
     <div className="latest-collection">
-      
       <h1>Latest Collection</h1>
       <div className="carousel-container">
         <button className="arrow left-arrow" onClick={scrollLeft}>
@@ -29,7 +27,7 @@ const LatestCollection = ({ productList, theme }) => {
         </button>
 
         <div className="productList" ref={productContainerRef}>
-          {firstSixProducts.map((product) => (
+          {productList.map((product) => (
             <div key={product.id} className={`product-card ${theme}`}>
               <img 
                 src={product.image_url} 
