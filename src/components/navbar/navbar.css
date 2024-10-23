@@ -4,7 +4,7 @@
   justify-content: space-between;
   padding: 1rem 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #f8f8f8;
   color: #000; 
   transition: background-color 0.3s, color 0.3s; 
 }
@@ -83,21 +83,15 @@
 }
 
 .cart-badge {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: #ff6600;
-  color: white;
-  font-size: 12px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  position: relative;
+  top: -9px; 
+  right: 9px;; 
 }
-
+.wishlist-badge {
+  position: relative;
+  top: -8px; 
+  right: 8px;; 
+}
 .cart-badge.hidden {
   display: none;
 }

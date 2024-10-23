@@ -10,6 +10,7 @@ import Cart from './pages/cart';
 import Product from './pages/productPage'; 
 import Wishlist from './pages/wishlist';
 import Error from '../src/assets/error.jpg';
+import Errorpage from '../src/pages/NotFoundPage'
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
@@ -64,7 +65,7 @@ function App() {
 
   return (
     <div className='container'>
-      <Navbar theme={theme} setTheme={setTheme} />
+      <Navbar theme={theme} setTheme={setTheme}  wishList= {wishList} />
       <Routes>
         <Route path='/' element={<HomePage theme={theme} productList={limitedProductList} loading={loading} error={error}/>} />
         <Route path='/products' element={<Productsitem theme={theme} productList={productList} setUserInput={setUserInput} userInput={userInput} wishList={wishList} setWishList={setWishList} />} />
@@ -73,8 +74,11 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/wishlist' element={<Wishlist  theme={theme} wishList={wishList} setWishList={setWishList} />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/*' element={<Errorpage />} />
+
       </Routes>
       <Footer theme={theme} /> 
+
     </div>
   );
 }

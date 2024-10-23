@@ -7,10 +7,9 @@ export default function Footer({ theme }) {
       <div>
         <p>COMPANY</p>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#delivery">Delivery</a></li>
-          <li><a href="#policy">Privacy policy</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="delivery">Delivery</a></li>
+          <li><a href="policy">Privacy policy</a></li>
         </ul>
       </div>
       <div className="footer-contact">
