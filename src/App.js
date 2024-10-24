@@ -3,12 +3,12 @@ import axios from 'axios';
 import CircularProgress from "@mui/material/CircularProgress";
 import './App.css';
 import HomePage from './pages/HomePage';
-import About from './pages/About';
-import Productsitem from './pages/Products';
-import Contact from './pages/contact';
-import Cart from './pages/cart';
-import Product from './pages/productPage'; 
-import Wishlist from './pages/wishlist';
+import About from './pages/AboutPage';
+import Productsitem from './pages/ProductsPage';
+import Contact from './pages/ContactPage';
+import Cart from './pages/CartPage';
+import Product from './pages/ProductPage'; 
+import Wishlist from './pages/WishlistPage';
 import Error from '../src/assets/error.jpg';
 import Errorpage from '../src/pages/NotFoundPage'
 import { Route, Routes } from 'react-router-dom';
