@@ -1,5 +1,5 @@
 import React from 'react';
-import Contactimg from '../../src/assets/contact_img.png';
+import Contactimg from '../../src/assets/contact_img.jpg';
 
 const Contact = () => {
   return (
@@ -9,7 +9,7 @@ const Contact = () => {
       </div>
       <div className="my-10 flex flex-col justify-center md:flex-row gap-10 mb-28">
         <img
-          className="w-full md:max-w-[450px] rounded-lg shadow-lg object-cover"
+          className="w-full  md:max-w-[450px] rounded-lg shadow-lg object-cover"
           src={Contactimg}
           alt="Contact Us"
         />

@@ -9,9 +9,6 @@ const Form = ({ setUserInput }) => {
   return (
     <div>
       <form>
-        <label className="form-label">
-          Please enter product name:
-        </label>
         <input
           type='text'
           onChange={onChangeHandler}

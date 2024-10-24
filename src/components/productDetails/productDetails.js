@@ -18,7 +18,6 @@ const ProductDetails = ({ theme }) => {
         const fetchedProduct = response.data[0];
         setProduct(fetchedProduct);
       } catch (error) {
-        console.error("Error fetching product data:", error);
         setError("Failed to load product data. Please try again later.");
       } finally {
         setLoading(false);
