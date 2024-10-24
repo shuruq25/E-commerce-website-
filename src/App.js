@@ -1,36 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
-import './App.css';
-import HomePage from './pages/HomePage';
-import About from './pages/AboutPage';
-import Productsitem from './pages/ProductsPage';
-import Contact from './pages/ContactPage';
-import Cart from './pages/CartPage';
-import Product from './pages/ProductPage'; 
-import Wishlist from './pages/WishlistPage';
-import Error from '../src/assets/error.jpg';
-import Errorpage from '../src/pages/NotFoundPage'
-import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/navbar/navbar';
-import Footer from './components/footer/footer';
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import About from "./pages/AboutPage";
+import Productsitem from "./pages/ProductsPage";
+import Contact from "./pages/ContactPage";
+import Cart from "./pages/CartPage";
+import Product from "./pages/ProductPage";
+import Wishlist from "./pages/WishlistPage";
+import Error from "../src/assets/error.jpg";
+import Errorpage from "../src/pages/NotFoundPage";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/navbar/navbar";
+import Footer from "./components/footer/footer";
 
 function App() {
-  const current_theme = localStorage.getItem('current_theme');
-  const [theme, setTheme] = useState(current_theme ? current_theme : 'light');
+  const current_theme = localStorage.getItem("current_theme");
+  const [theme, setTheme] = useState(current_theme ? current_theme : "light");
   const url = "https://fake-coffee-api.vercel.app/api";
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [wishList, setWishList] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem('current_theme', theme);
+    localStorage.setItem("current_theme", theme);
     document.body.className = theme;
   }, [theme]);
 
-  const getData = async () => { 
+  const getData = async () => {
     try {
       const response = await axios.get(url);
       setProductList(response.data);
@@ -61,24 +62,74 @@ function App() {
     );
   }
 
-  const limitedProductList = productList.slice(0, 5); 
+  const limitedProductList = productList.slice(0, 5);
 
   return (
-    <div className='container'>
-      <Navbar theme={theme} setTheme={setTheme}  wishList= {wishList} />
+    <div className="container">
+      <Navbar
+        theme={theme}
+        setTheme={setTheme}
+        wishList={wishList}
+        cart={cart}
+      />
       <Routes>
-        <Route path='/' element={<HomePage theme={theme} productList={limitedProductList} loading={loading} error={error}/>} />
-        <Route path='/products' element={<Productsitem theme={theme} productList={productList} setUserInput={setUserInput} userInput={userInput} wishList={wishList} setWishList={setWishList} />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/products/:id' element={<Product theme={theme} />} /> 
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/wishlist' element={<Wishlist  theme={theme} wishList={wishList} setWishList={setWishList} />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/*' element={<Errorpage />} />
-
+        <Route
+          path="/"
+          element={
+            <HomePage
+              theme={theme}
+              productList={limitedProductList}
+              loading={loading}
+              error={error}
+            />
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <Productsitem
+              theme={theme}
+              productList={productList}
+              setUserInput={setUserInput}
+              userInput={userInput}
+              wishList={wishList}
+              setWishList={setWishList}
+              cart={cart}
+              setCart={setCart}
+            />
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route
+          path="/products/:id"
+          element={
+            <Product
+              theme={theme}
+              wishList={wishList}
+              setWishList={setWishList}
+              cart={cart}
+              setCart={setCart}
+            />
+          }
+        />
+        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/wishlist"
+          element={
+            <Wishlist
+              theme={theme}
+              wishList={wishList}
+              setWishList={setWishList}
+            />
+          }
+        />
+        <Route
+          path="/cart"
+          element={<Cart theme={theme} cart={cart} setCart={setCart} />}
+        />
+        <Route path="/*" element={<Errorpage />} />
       </Routes>
-      <Footer theme={theme} /> 
-
+      <Footer theme={theme} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import "./LatestCollection.css";
+import { Link } from "react-router-dom";
 
 const LatestCollection = ({ productList, theme }) => {
   const productContainerRef = useRef(null);
@@ -19,7 +20,9 @@ const LatestCollection = ({ productList, theme }) => {
               {product.name}
             </h3>
             <p className="product-price">${product.price}</p>
+            <Link to={`/products/${product.id}`}>
             <button className="add-to-cart">More Details</button>
+            </Link>
           </div>
         ))}
       </div>

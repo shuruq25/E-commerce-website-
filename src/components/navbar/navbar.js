@@ -16,7 +16,7 @@ const Icon = ({ src, alt, onClick }) => (
   <img className="icon" src={src} alt={alt} onClick={onClick} />
 );
 
-export default function Navbar({ theme, setTheme, wishList }) {
+export default function Navbar({ theme, setTheme, wishList ,cart }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -32,7 +32,8 @@ export default function Navbar({ theme, setTheme, wishList }) {
     setDropdownOpen((prev) => !prev);
   }, []);
 
-  const arrayLength = wishList.length;
+  const wishListArrayLength = wishList.length;
+  const cartArrayLength=cart.length;
 
   return (
     <div className={`navbar ${theme}`}>
@@ -91,7 +92,7 @@ export default function Navbar({ theme, setTheme, wishList }) {
           />          
           </Link>
           <div className="cart-badge inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-orange-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-            0
+            {cartArrayLength}
           </div>
 
         {/* Wishlist Icon */}
@@ -104,7 +105,7 @@ export default function Navbar({ theme, setTheme, wishList }) {
         
         {/* Wishlist Badge */}
         <div className="wishlist-badge inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-orange-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-          {arrayLength}
+          {wishListArrayLength}
         </div>
 
         {/* Theme Toggle Icon */}

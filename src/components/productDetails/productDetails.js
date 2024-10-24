@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./productDetails.css";
 
-const ProductDetails = ({ theme }) => {
+const ProductDetails = ({ theme, wishList, setWishList, cart, setCart }) => {
   const { id } = useParams();
   const url = `https://fake-coffee-api.vercel.app/api/${id}`;
   const [product, setProduct] = useState(null);
@@ -27,16 +27,34 @@ const ProductDetails = ({ theme }) => {
     getData();
   }, [url]);
 
-  const handleAddToCart = () => {
-    alert(`${product.name} added to cart with quantity: ${quantity}!`);
-  };
-
   const increaseQuantity = () => {
     setQuantity((prev) => Math.min(prev + 1, 99));
   };
 
   const decreaseQuantity = () => {
     setQuantity((prev) => Math.max(prev - 1, 1));
+  };
+
+  const addToFav = (product) => {
+    if (!wishList.some(item => item.id === product.id)) {
+      setWishList([...wishList, product]);
+      console.log("Product added to wishlist:", product);
+    } else {
+      alert("This item is already in your wishlist.");
+    }
+  };
+
+  const addToCart = (product) => {
+    const updatedCart = [...cart];
+    const existingItemIndex = updatedCart.findIndex(item => item.id === product.id);
+
+    if (existingItemIndex >= 0) {
+      updatedCart[existingItemIndex].quantity += quantity;
+    } else {
+      updatedCart.push({ ...product, quantity });
+    }
+
+    setCart(updatedCart);
   };
 
   if (loading) return <div className="loader">Loading...</div>;
@@ -65,12 +83,15 @@ const ProductDetails = ({ theme }) => {
             />
             <div className="flex-row mb-4">
               <button
-                onClick={handleAddToCart}
+                onClick={() => addToCart(product)}
                 className={`button add-to-cart ${theme}`}
               >
                 Add to Cart
               </button>
-              <button className={`button add-to-wishlist ${theme}`}>
+              <button 
+                onClick={() => addToFav(product)} 
+                className={`button add-to-wishlist ${theme}`}
+              >
                 Add to Wishlist
               </button>
             </div>
