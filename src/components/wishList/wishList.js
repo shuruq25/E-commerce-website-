@@ -1,11 +1,41 @@
-import React from 'react';
 import './wishlist.css';
+import { Link } from 'react-router-dom';
+import Snackbar from '@mui/material/Snackbar';
+import React, { useState } from "react";
 
-const WishList = ({ wishList = [], setWishList, theme }) => {
+const WishList = ({ wishList = [], setWishList, theme, cart = [], setCart }) => {
   const containerClass = theme === 'light' ? 'wishlist-container-light' : 'wishlist-container-dark';
   const titleClass = theme === 'light' ? 'wishlist-title-light' : 'wishlist-title-dark';
   const textClass = theme === 'light' ? 'text-gray-800' : 'text-gray-200';
-  
+  const [open, setOpen] = useState(false);
+
+  const addToCart = (product) => {
+    const updatedCart = [...cart];
+    const existingItemIndex = updatedCart.findIndex(item => item.id === product.id);
+
+    if (existingItemIndex >= 0) {
+      updatedCart[existingItemIndex].quantity += 1;
+    } else {
+      updatedCart.push({ ...product, quantity: 1 });
+    }
+
+    setCart(updatedCart);
+    handleDelete(product.id);
+    setOpen(true); 
+  };
+
+  const handleDelete = (id) => {
+    setWishList(wishList.filter(item => item.id !== id));
+  };
+
+  const handleClose = (event, reason) => {
+    console.log("Snackbar close:", reason);
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
   if (wishList.length === 0) {
     return (
       <div className={containerClass}>
@@ -14,43 +44,49 @@ const WishList = ({ wishList = [], setWishList, theme }) => {
     );
   }
 
-  const handleDelete = (id) => {
-    setWishList(wishList.filter(item => item.id !== id));
-  };
-
   return (
-    <div>
-      <h1 className={titleClass}>Wishlist</h1>
+    <div className={containerClass}>
+      <h1>WISHLIST</h1>
       <p className={`text-2xl tracking-tight leading-6 ${textClass}`}>{wishList.length} items</p>
-      <div className="mt-10 lg:mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-10 lg:gap-y-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {wishList.map((item) => (
-          <div key={item.id} className="wishlist-item">
-            <div className="relative">
-              <img 
-                src={item.image_url} 
-                alt={item.name} 
-                onError={(e) => { e.target.onerror = null; e.target.src = 'path/to/placeholder.jpg'; }} 
-              />
+          <div key={item.id} className="wishlist-card inset-x-0 top-0 p-4 border rounded-lg shadow-lg">
+            <button 
+              aria-label="delete" 
+              onClick={() => handleDelete(item.id)} 
+              className="wishlist-button"
+            >
+              <svg className="fil-current w-4 h-4" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 1L1 13" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M1 1L13 13" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <img 
+              src={item.image_url} 
+              alt={item.name} 
+              onError={(e) => { e.target.onerror = null; e.target.src = 'path/to/placeholder.jpg'; }} 
+              className="wishlist-image w-full h-48 object-cover rounded"
+            />
+            <h3 className={`wishlist-item-name ${textClass} mt-4`}>{item.name}</h3>
+            <p className={`wishlist-item-price ${textClass}`}>${item.price}</p>
+            <div className="mt-4 flex space-x-2">
+              <Link to={`/products/${item.id}`} className="wishlist-button">More info</Link>
               <button 
-                aria-label="delete" 
-                onClick={() => handleDelete(item.id)} 
-                className="absolute top-4 right-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 p-1.5 bg-red-600 text-white hover:bg-red-500"
+                onClick={() => addToCart(item)} 
+                className="wishlist-button"
               >
-                <svg className="fil-current" width={14} height={14} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13 1L1 13" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M1 1L13 13" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                Add to cart
               </button>
             </div>
-            <div className="mt-6">
-              <p className={`wishlist-item-name ${textClass}`}>{item.name}</p>
-              <p className={`wishlist-item-price ${textClass}`}>${item.price}</p>
-            </div>
-            <button className="wishlist-button">More information</button>
-            <button className="wishlist-button">Add to cart</button>
           </div>
         ))}
       </div>
+      <Snackbar 
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        message="Item added to cart!"
+      />
     </div>
   );
 };

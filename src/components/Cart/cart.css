@@ -44,7 +44,6 @@
   }
   
   .table-header {
-    background-color: gray; 
     padding: 10px;
     text-align: left;
   }
@@ -81,7 +80,7 @@
   }
   
   .place-order-button {
-    background-color: #4CAF50; 
+    background-color: orange; 
     color: white;
     border: none;
     padding: 10px 15px;
@@ -91,6 +90,6 @@
   }
   
   .place-order-button:hover {
-    background-color: #45a049; 
+    background-color: orange; 
   }
   

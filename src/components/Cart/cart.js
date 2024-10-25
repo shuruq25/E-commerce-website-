@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import './cart.css';
 
-const Cart = ({ theme, cart = [], setCart }) => {
+const Cart = ({ theme, cart = [], setCart=[] }) => {
   const containerClass = theme === 'light' ? 'cart-container-light' : 'cart-container-dark';
   const titleClass = theme === 'light' ? 'cart-title-light' : 'cart-title-dark';
   const textClass = theme === 'light' ? 'text-gray-800' : 'text-gray-200';
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
-    setOpen(true);
-    setCart([]); 
+        setOpen(true); 
+    setTimeout(() => {
+      setCart([]);
+    }, 700);
   };
 
   const handleClose = (event, reason) => {
+    console.log("Snackbar close:", reason);
     if (reason === 'clickaway') {
       return;
     }
@@ -47,7 +50,7 @@ const Cart = ({ theme, cart = [], setCart }) => {
 
   return (
     <div className={containerClass}>
-      <p className={`text-2xl ${textClass}`}>{cart.length} items</p>
+      <h1>CART</h1>
       <table className="cart-table">
         <thead>
           <tr>
@@ -76,7 +79,7 @@ const Cart = ({ theme, cart = [], setCart }) => {
       <div className="cart-summary">
         <p className={`total-price ${textClass}`}>Total: ${calculateTotal().toFixed(2)}</p>
         <button onClick={handleClick} className="place-order-button">Place Order</button>
-        <Snackbar
+        <Snackbar 
           open={open}
           autoHideDuration={5000}
           onClose={handleClose}

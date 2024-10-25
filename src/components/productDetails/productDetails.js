@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
 import axios from "axios";
 import "./productDetails.css";
 
 const ProductDetails = ({ theme, wishList, setWishList, cart, setCart }) => {
   const { id } = useParams();
   const url = `https://fake-coffee-api.vercel.app/api/${id}`;
+  const [snackbar, setSnackbar] = useState({ open: false, message: "Something want wrong" });
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,9 +40,7 @@ const ProductDetails = ({ theme, wishList, setWishList, cart, setCart }) => {
   const addToFav = (product) => {
     if (!wishList.some(item => item.id === product.id)) {
       setWishList([...wishList, product]);
-      console.log("Product added to wishlist:", product);
-    } else {
-      alert("This item is already in your wishlist.");
+      showSnackbar(`A ${product.name} has been added to your wishlist`);
     }
   };
 
@@ -55,8 +55,19 @@ const ProductDetails = ({ theme, wishList, setWishList, cart, setCart }) => {
     }
 
     setCart(updatedCart);
+    showSnackbar(`A ${product.name} has been added to your cart`);
+  };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbar({ ...snackbar, open: false });
   };
 
+  const showSnackbar = (message) => {
+    setSnackbar({ open: true, message });
+    setTimeout(() => setSnackbar({ open: false, message: "" }), 3000);
+  };
   if (loading) return <div className="loader">Loading...</div>;
   if (error) return <div className="error">{error}</div>;
   if (!product) return <div>Product not found.</div>;
@@ -161,6 +172,12 @@ const ProductDetails = ({ theme, wishList, setWishList, cart, setCart }) => {
           </div>
         </div>
       </div>
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        message={snackbar.message}
+      />
     </div>
   );
 };

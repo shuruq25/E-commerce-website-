@@ -64,7 +64,8 @@ export default function Navbar({ theme, setTheme, wishList ,cart }) {
           <p>CONTACT</p>
         </NavLink>
       </ul>
-
+          
+      
       {/* Sign-In Dropdown and Icons */}
       <div className="nav-icons">
         <div className="signin-dropdown">
